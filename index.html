@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8" / >
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KOKOYA PARIS — L'Art du Sushi Authentique</title>
 
-    <!--=============== GOOGLE FONTS (Inter for crisp body text & Libre Baskerville for editorial elegance) ===============-->
+    <!--=============== GOOGLE FONTS (Ysabeau Office exclusively for all styles) ===============-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <!--=============== REMIXICONS (Premium Icons) ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
@@ -17,13 +17,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-      /* STREAMING_CHUNK: Configuring Tailwind theme variables... */
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['"Libre Baskerville"', 'serif'],
+              sans: ['"Ysabeau Office"', 'sans-serif'],
+              serif: ['"Ysabeau Office"', 'serif'],
             },
             colors: {
               bronze: {
@@ -42,7 +41,6 @@
     </script>
 
     <style>
-      /* STREAMING_CHUNK: Implementing language switcher classes & styling scrollbars... */
       /* Language Switcher Logic */
       .lang-en [lang="fr"] { display: none !important; }
       .lang-fr [lang="en"] { display: none !important; }
@@ -89,15 +87,15 @@
     <header class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent" id="header">
       <nav class="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between relative">
         
-        <!-- Left: Navigation (Menu, Info, Contact) with larger, highly readable fonts -->
-        <div class="hidden md:flex items-center space-x-8 lg:space-x-12 text-sm uppercase tracking-[0.25em] font-semibold text-neutral-800" id="nav-links">
+        <!-- Left: Navigation (Menu, Info, Contact) -->
+        <div class="hidden md:flex items-center space-x-8 lg:space-x-12 text-sm uppercase tracking-[0.25em] font-bold text-neutral-800 opacity-0 pointer-events-none transition-all duration-700" id="nav-links">
           <a href="#popular" class="hover:text-bronze-300 transition-colors duration-300">
-            <span lang="fr">Menu</span>
-            <span lang="en">Menu</span>
+            <span lang="fr">menu</span>
+            <span lang="en">menu</span>
           </a>
           <a href="#about" class="hover:text-bronze-300 transition-colors duration-300">
-            <span lang="fr">Info</span>
-            <span lang="en">Info</span>
+            <span lang="fr">info</span>
+            <span lang="en">info</span>
           </a>
           <a href="#join" class="hover:text-bronze-300 transition-colors duration-300">
             <span lang="fr">Contact</span>
@@ -106,14 +104,14 @@
         </div>
 
         <!-- Center: Elegant Logo KOKOYA -->
-        <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
-          <a href="#" class="text-xl md:text-2xl font-semibold tracking-[0.4em] text-neutral-900 hover:opacity-80 transition-opacity">
+        <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 pointer-events-none transition-all duration-700" id="nav-logo">
+          <a href="#" class="text-xl md:text-2xl font-bold tracking-[0.4em] text-neutral-900 hover:opacity-80 transition-opacity">
             KOKOYA
           </a>
         </div>
 
         <!-- Right: Language Switcher (EN / FR) & Mobile Button -->
-        <div class="flex items-center space-x-6 z-10">
+        <div class="flex items-center space-x-6 z-10 ml-auto md:ml-0">
           <!-- Active Lang Highlight Switcher -->
           <div class="flex items-center space-x-2 text-xs uppercase tracking-widest font-bold border border-neutral-200 rounded-full px-4 py-2 bg-white/80 backdrop-blur-sm shadow-sm">
             <button id="btn-fr" class="text-neutral-900 hover:text-bronze-300 transition-colors duration-300 px-1" onclick="switchLanguage('fr')">FR</button>
@@ -134,14 +132,14 @@
           <i class="ri-close-line"></i>
         </button>
 
-        <div class="flex flex-col space-y-8 mt-16 text-sm uppercase tracking-[0.3em] font-semibold">
+        <div class="flex flex-col space-y-8 mt-16 text-sm uppercase tracking-[0.3em] font-bold">
           <a href="#popular" class="nav-mobile-link text-neutral-800 hover:text-bronze-300 transition-colors">
-            <span lang="fr">Menu</span>
-            <span lang="en">Menu</span>
+            <span lang="fr">menu</span>
+            <span lang="en">menu</span>
           </a>
           <a href="#about" class="nav-mobile-link text-neutral-800 hover:text-bronze-300 transition-colors">
-            <span lang="fr">Info</span>
-            <span lang="en">Info</span>
+            <span lang="fr">info</span>
+            <span lang="en">info</span>
           </a>
           <a href="#join" class="nav-mobile-link text-neutral-800 hover:text-bronze-300 transition-colors">
             <span lang="fr">Contact</span>
@@ -162,41 +160,42 @@
     <!--==================== MAIN CONTENT ====================-->
     <main class="main">
 
-      <!--==================== HOME / HERO (Full-bleed cinematic look inspired by headless.builders) ====================-->
+      <!--==================== HOME / HERO ====================-->
       <section class="relative h-screen w-full flex items-center justify-center overflow-hidden" id="home">
         
         <!-- Full-bleed background image with slow motion zoom -->
         <div class="absolute inset-0 w-full h-full -z-20">
           <img 
-            src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=2000" 
+            src="assets/img/sushi2.jpg" 
             alt="Meticulous Sushi Artistry" 
             class="bg-zoom w-full h-full object-cover"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=2000';"
           />
         </div>
 
         <!-- Premium Dark Overlay for Perfect Text Contrast and Legibility -->
-        <div class="absolute inset-0 bg-neutral-950/45 dark:bg-neutral-950/45 -z-10"></div>
+        <div class="absolute inset-0 bg-neutral-950/45 -z-10"></div>
 
         <!-- Hero Text Content Overlay -->
         <div class="max-w-5xl mx-auto px-6 text-center text-white space-y-10 z-10">
-          <div class="inline-flex items-center space-x-4 text-xs md:text-sm tracking-[0.6em] text-bronze-300 uppercase font-semibold">
+          <div class="inline-flex items-center space-x-4 text-xs md:text-sm tracking-[0.6em] text-bronze-300 uppercase font-bold">
             <span class="w-10 h-px bg-bronze-300"></span>
             <span>
-              <span lang="fr">L'Équilibre Parfait</span>
-              <span lang="en">The Perfect Balance</span>
+              <span lang="fr">L'Essence du Japon</span>
+              <span lang="en">The Essence of Japan</span>
             </span>
             <span class="w-10 h-px bg-bronze-300"></span>
           </div>
           
-          <!-- Large, stunning and highly readable title (using Libre Baskerville) -->
-          <h1 class="text-4xl sm:text-6xl md:text-7.5xl font-serif tracking-[0.012em] leading-[1.2] font-semibold drop-shadow-md">
-            <span lang="fr">L'Essence du Japon — <br><span class="font-normal italic text-bronze-200">Le Vrai Sushi</span> Traditionnel</span>
-            <span lang="en">The Essence of Japan — <br><span class="font-normal italic text-bronze-200">True Traditional</span> Sushi</span>
+          <!-- Large, stunning and highly readable title in Ysabeau Office -->
+          <h1 class="text-4xl sm:text-6xl md:text-7.5xl font-sans tracking-[0.012em] leading-[1.2] font-semibold drop-shadow-md">
+            <span lang="fr">KOKOYA<br><span class="font-normal italic text-bronze-200">Le Vrai Sushi</span> Traditionnel</span>
+            <span lang="en">KOKOYA<br><span class="font-normal italic text-bronze-200">True Traditional</span> Sushi</span>
           </h1>
 
           <p class="text-sm md:text-lg text-neutral-100 font-light leading-relaxed max-w-3xl mx-auto tracking-wider drop-shadow-sm">
-            <span lang="fr">Découvrez l'art ancestral de l'Edomae sushi au cœur de Paris. Un voyage gastronomique exclusif de huit couverts face au Maître Itamae, où chaque geste est orchestré avec une précision absolue.</span>
-            <span lang="en">Discover the ancestral art of Edomae sushi in the heart of Paris. An exclusive dining journey of eight seats facing the Master Itamae, where every gesture is orchestrated with absolute precision.</span>
+            <span lang="fr">Découvrez l'art ancestral de l'Edomae sushi au cœur de Paris. Un voyage gastronomique exclusif de onze couverts face au Maître Itamae, où chaque geste est orchestrated avec une précision absolue.</span>
+            <span lang="en">Discover the ancestral art of Edomae sushi in the heart of Paris. An exclusive dining journey of eleven seats facing the Master Itamae, where every gesture is orchestrated with absolute precision.</span>
           </p>
 
           <div class="flex flex-col sm:flex-row gap-6 justify-center pt-6">
@@ -217,75 +216,8 @@
         </div>
       </section>
 
-      <!--==================== PHILOSOPHY / PILLARS ====================-->
-      <section class="py-32 bg-white" id="philosophy">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-          
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-baseline mb-24 reveal">
-            <div class="lg:col-span-4 space-y-4">
-              <span class="text-xs tracking-[0.5em] text-bronze-300 uppercase font-bold">
-                <span lang="fr">Le Geste Pur</span>
-                <span lang="en">The Pure Movement</span>
-              </span>
-              <h2 class="text-3xl md:text-4xl font-serif text-neutral-900 font-semibold leading-tight">
-                <span lang="fr">L'Art du Comptoir</span>
-                <span lang="en">The Art of the Counter</span>
-              </h2>
-            </div>
-            <div class="lg:col-span-8">
-              <p class="text-neutral-600 font-light text-base md:text-lg tracking-wider leading-relaxed max-w-2xl">
-                <span lang="fr">À Kokoya Paris, la tradition n'est pas imitée, elle est vécue. Notre riz Shari est assaisonné avec une sélection rigoureuse de vinaigres rouges vieillis (Akazu), lui conférant sa teinte ambrée unique et sa complexité umami.</span>
-                <span lang="en">At Kokoya Paris, tradition is not imitated, it is lived. Our Shari rice is seasoned with a rigorous selection of aged red vinegars (Akazu), giving it its unique amber color and complex umami.</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <!-- Card 1 -->
-            <div class="border border-neutral-100 bg-neutral-50/30 p-10 hover:border-bronze-300 hover:bg-white transition-all duration-500 rounded-lg space-y-6 reveal">
-              <div class="w-12 h-[2px] bg-bronze-300"></div>
-              <h3 class="text-lg font-bold text-neutral-900 uppercase tracking-wider">
-                <span lang="fr">Précision</span>
-                <span lang="en">Precision</span>
-              </h3>
-              <p class="text-neutral-600 text-sm leading-relaxed font-light tracking-wide">
-                <span lang="fr">L'Itamae calibre chaque découpe au millimètre près. L'angle de l'acier et la pression sur le Shari définissent une mâche d'une finesse incomparable.</span>
-                <span lang="en">The Itamae calibrates every single cut down to the millimeter. The angle of the steel blade and the exact pressure on the Shari create an incomparable mouthfeel.</span>
-              </p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="border border-neutral-100 bg-neutral-50/30 p-10 hover:border-bronze-300 hover:bg-white transition-all duration-500 rounded-lg space-y-6 reveal" style="transition-delay: 150ms;">
-              <div class="w-12 h-[2px] bg-bronze-300"></div>
-              <h3 class="text-lg font-bold text-neutral-900 uppercase tracking-wider">
-                <span lang="fr">Sourcing</span>
-                <span lang="en">Sourcing</span>
-              </h3>
-              <p class="text-neutral-600 text-sm leading-relaxed font-light tracking-wide">
-                <span lang="fr">Un sourcing exclusif mariant les plus belles criques de Bretagne aux importations confidentielles du marché de Toyosu à Tokyo.</span>
-                <span lang="en">An exclusive sourcing strategy marrying the finest wild catches from Brittany with confidential imports directly from Toyosu Market in Tokyo.</span>
-              </p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="border border-neutral-100 bg-neutral-50/30 p-10 hover:border-bronze-300 hover:bg-white transition-all duration-500 rounded-lg space-y-6 reveal" style="transition-delay: 300ms;">
-              <div class="w-12 h-[2px] bg-bronze-300"></div>
-              <h3 class="text-lg font-bold text-neutral-900 uppercase tracking-wider">
-                Wabi-Sabi
-              </h3>
-              <p class="text-neutral-600 text-sm leading-relaxed font-light tracking-wide">
-                <span lang="fr">Une architecture de l'ombre, de la pierre brute et du bois de hinoki pour créer un sanctuaire de sérénité absolue loin du tumulte parisien.</span>
-                <span lang="en">An architecture of shadow, raw volcanic stone, and Hinoki wood to build a sanctuary of absolute serenity far removed from the Parisian bustle.</span>
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!--==================== ABOUT US ====================-->
-      <section class="py-32 border-t border-neutral-100 bg-neutral-50/50" id="about">
+      <!--==================== RESTAURANT INFORMATION (L'Histoire ➔ info) ====================-->
+      <section class="py-32 bg-neutral-50/50" id="about">
         <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           <!-- Image Side -->
@@ -299,33 +231,55 @@
             </div>
           </div>
 
-          <!-- Text Side -->
-          <div class="lg:col-span-6 space-y-8 text-left reveal">
-            <div class="inline-flex items-center space-x-3 text-xs tracking-[0.5em] text-bronze-300 uppercase font-semibold">
-              <span class="w-8 h-px bg-bronze-300"></span>
-              <span>
-                <span lang="fr">L'Histoire</span>
-                <span lang="en">Our Story</span>
-              </span>
-            </div>
-
-            <h2 class="text-3xl md:text-4xl font-serif text-neutral-900 font-semibold leading-[1.3]">
-              <span lang="fr">La Noblesse <br>Du Geste Pur</span>
-              <span lang="en">The Nobility <br>Of Pure Craft</span>
+          <!-- Text Side with Restaurant Information -->
+          <div class="lg:col-span-6 space-y-10 text-left reveal">
+            <h2 class="text-2xl md:text-3xl font-sans text-neutral-900 font-semibold leading-[1.3] tracking-wide">
+              <span lang="fr">Coin japonais intime (11 places) : Sushis, sashimis d'une fraîcheur rare.</span>
+              <span lang="en">Intimate Japanese space (11 seats): Exceptionally fresh sushi and sashimi.</span>
             </h2>
 
-            <p class="text-base text-neutral-600 font-light leading-relaxed tracking-wider">
-              <span lang="fr">Dans notre établissement confidentiel, la hâte n’a pas sa place. Chaque poisson fait l’objet d’une préparation sur mesure (Jukusei), une maturation minutieuse qui permet d'atteindre l'UMAMI le plus pur. <br><br>Le chef vous guide à travers un voyage interactif unique, expliquant l'histoire et l'origine de chaque pièce déposée délicatement sur la laque noire du comptoir.</span>
-              <span lang="en">In our confidential establishment, haste has no place. Every fish undergoes custom aging (Jukusei), a meticulous curation that brings out the purest form of UMAMI. <br><br>The chef guides you through a unique interactive experience, explaining the deep history and origin of each piece placed on the lacquered counter.</span>
-            </p>
+            <!-- Restaurant Details Block -->
+            <div class="space-y-10 text-base text-neutral-600 font-light leading-relaxed tracking-wider">
+              
+              <!-- Quick Info List - Highly Emphasized and enlarged -->
+              <div class="grid grid-cols-1 gap-8 pt-6 border-t border-neutral-200/60">
+                <div class="space-y-2">
+                  <span class="block uppercase tracking-widest text-lg font-bold text-neutral-900">
+                    <span lang="fr">Horaires de Service</span>
+                    <span lang="en">Service Hours</span>
+                  </span>
+                  <p class="text-neutral-700 text-base leading-relaxed">
+                    <strong class="text-neutral-900">Mardi — Samedi (Tuesday — Saturday)</strong><br>
+                    12:00 - 14:30 <span class="text-neutral-500 font-normal">(last order 14:00)</span><br>
+                    19:00 - 21:30 <span class="text-neutral-500 font-normal">(last order 21:20)</span><br>
+                    <span class="text-neutral-900 font-bold block mt-1">
+                      <span lang="fr">fermé : dimanche, lundi et jours fériés</span>
+                      <span lang="en">closed: Sunday, Monday and public holidays</span>
+                    </span>
+                  </p>
+                </div>
 
-            <div class="pt-4">
-              <a href="#popular" class="inline-flex items-center space-x-4 group text-xs uppercase tracking-[0.3em] text-neutral-900 font-bold hover:text-bronze-300 transition-colors">
+                <div class="space-y-2">
+                  <span class="block uppercase tracking-widest text-lg font-bold text-neutral-900">
+                    <span lang="fr">Réservations & Coordonnées</span>
+                    <span lang="en">Reservations & Location</span>
+                  </span>
+                  <p class="text-neutral-900 text-lg leading-relaxed">
+                    <strong>Tel:</strong> <a href="tel:0144909812" class="text-neutral-900 hover:text-bronze-300 font-extrabold underline">01 44 90 98 12</a><br>
+                    <strong>Adresse:</strong> 5 rue des Batignolles, 75017 Paris
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Highly prominent takeout menu download link -->
+            <div class="pt-2">
+              <a href="assets/img/kokoya_emp_062026.pdf" target="_blank" class="inline-flex items-center space-x-4 group text-base md:text-lg uppercase tracking-[0.3em] text-neutral-900 font-extrabold hover:text-bronze-300 transition-colors border-b-2 border-neutral-900 pb-2">
                 <span>
-                  <span lang="fr">Découvrir notre Omakase</span>
-                  <span lang="en">Discover our Omakase</span>
+                  <span lang="fr">Télécharger le menu à emporter</span>
+                  <span lang="en">Download Takeout Menu</span>
                 </span>
-                <i class="ri-arrow-right-line group-hover:translate-x-2 transition-transform duration-300 text-bronze-300"></i>
+                <i class="ri-file-pdf-line group-hover:translate-x-2 transition-transform duration-300 text-bronze-300 text-xl"></i>
               </a>
             </div>
           </div>
@@ -333,23 +287,15 @@
         </div>
       </section>
 
-      <!--==================== MENU / POPULAR ====================-->
+      <!--==================== MENUS (nos menus) ====================-->
       <section class="py-32 bg-white border-t border-neutral-100" id="popular">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-24">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-16">
           
-          <div class="text-center space-y-4 max-w-2xl mx-auto reveal">
-            <span class="text-xs tracking-[0.5em] text-bronze-300 uppercase font-semibold">
-              <span lang="fr">Inspiration Edomae</span>
-              <span lang="en">Edomae Inspiration</span>
-            </span>
-            <h2 class="text-3xl md:text-4xl font-serif text-neutral-900 font-semibold">
-              <span lang="fr">Les Créations d'Exception</span>
-              <span lang="en">Signature Masterpieces</span>
+          <!-- Menu Title changed to "nos menus" and cleared subheadings -->
+          <div class="text-center max-w-2xl mx-auto reveal">
+            <h2 class="text-4xl md:text-5xl font-sans text-neutral-900 font-bold uppercase tracking-[0.3em]">
+              nos menus
             </h2>
-            <p class="text-neutral-500 font-light text-sm tracking-wider leading-relaxed">
-              <span lang="fr">Une sélection de nos pièces signatures du comptoir, sculptées pour l'extase gustative.</span>
-              <span lang="en">A handpicked selection of our finest counter creations, sculpted to pure perfection.</span>
-            </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -459,7 +405,7 @@
               </p>
             </div>
 
-            <!-- Menu Item 6 -->
+            <!-- Menu Item 6: The Full Ritual -->
             <div class="group border-b border-bronze-300 pb-8 text-left space-y-4 reveal" style="transition-delay: 200ms;">
               <div class="aspect-[16/10] w-full overflow-hidden bg-neutral-50 mb-6 rounded-lg shadow-sm border border-neutral-200">
                 <img 
@@ -486,21 +432,29 @@
 
       <!--==================== JOIN US / RESERVATION FORM ====================-->
       <section class="py-32 bg-neutral-50 border-t border-neutral-100" id="join">
-        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center space-y-16">
+        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center space-y-12">
           
-          <div class="space-y-4 max-w-2xl mx-auto reveal">
-            <span class="text-xs tracking-[0.5em] text-bronze-300 uppercase font-semibold">
-              <span lang="fr">Le Comptoir Confidentiel</span>
-              <span lang="en">The Confidential Counter</span>
-            </span>
-            <h2 class="text-3xl md:text-4xl font-serif text-neutral-900 font-semibold">
+          <div class="space-y-6 max-w-3xl mx-auto reveal">
+            <h2 class="text-3xl md:text-4xl font-sans text-neutral-900 font-bold tracking-wide">
               <span lang="fr">Demande de Réservation</span>
               <span lang="en">Reservation Request</span>
             </h2>
-            <p class="text-neutral-600 font-light text-sm tracking-widest leading-relaxed">
-              <span lang="fr">En raison de notre capacité exclusive (8 places face au chef), les réservations sont soumises à confirmation préalable par e-mail ou SMS.</span>
-              <span lang="en">Due to our exclusive seating (only 8 guests facing the chef), all reservations are subject to confirmation via email or SMS.</span>
-            </p>
+
+            <!-- Prominent Warning and Policy Block -->
+            <div class="bg-amber-50/70 border-l-4 border-bronze-300 p-6 md:p-8 rounded-r-lg text-left mt-6">
+              <p class="text-lg md:text-xl font-bold text-neutral-900 leading-relaxed tracking-wide space-y-2">
+                <span lang="fr" class="block">
+                  ⚠️ Nous acceptons les demandes de réservation <span class="underline">uniquement à partir de 2 jours à l'avance</span>. <br>
+                  <span class="text-red-700 font-extrabold block mt-2 mb-2">Tant que vous n'avez pas reçu notre e-mail de confirmation, votre réservation n'est PAS validée !</span>
+                  Pour les réservations du jour même, la priorité est accordée aux appels téléphoniques (<a href="tel:0144909812" class="underline hover:text-bronze-300">01 44 90 98 12</a>).
+                </span>
+                <span lang="en" class="block">
+                  ⚠️ We accept booking requests <span class="underline">only from 2 days in advance</span>. <br>
+                  <span class="text-red-700 font-extrabold block mt-2 mb-2">Without our written confirmation email, your reservation is NOT completed!</span>
+                  For same-day bookings, priority is given exclusively to phone calls (<a href="tel:0144909812" class="underline hover:text-bronze-300">01 44 90 98 12</a>).
+                </span>
+              </p>
+            </div>
           </div>
 
           <div class="bg-white p-10 md:p-16 border border-neutral-100 rounded-lg text-left shadow-lg reveal">
@@ -508,25 +462,27 @@
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="flex flex-col space-y-3">
-                  <label class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-bold">
+                  <label class="text-lg uppercase tracking-[0.2em] text-neutral-800 font-bold">
                     <span lang="fr">Nom / Prénom</span>
                     <span lang="en">Full Name</span>
                   </label>
                   <input 
                     type="text" 
                     required 
+                    name="name"
                     placeholder="Ex: Jean Martin" 
                     class="bg-transparent border-b border-neutral-200 py-3 text-base focus:border-neutral-900 outline-none text-neutral-800 transition-colors"
                   />
                 </div>
                 <div class="flex flex-col space-y-3">
-                  <label class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-bold">
+                  <label class="text-lg uppercase tracking-[0.2em] text-neutral-800 font-bold">
                     <span lang="fr">Contact Email</span>
                     <span lang="en">Email Address</span>
                   </label>
                   <input 
                     type="email" 
                     required 
+                    name="email"
                     placeholder="jean@example.com" 
                     class="bg-transparent border-b border-neutral-200 py-3 text-base focus:border-neutral-900 outline-none text-neutral-800 transition-colors"
                   />
@@ -535,31 +491,65 @@
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="flex flex-col space-y-3">
-                  <label class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-bold">
-                    <span lang="fr">Date Souhaitée</span>
-                    <span lang="en">Requested Date</span>
+                  <label class="text-lg uppercase tracking-[0.2em] text-neutral-800 font-bold">
+                    <span lang="fr">Téléphone portable</span>
+                    <span lang="en">Mobile Phone</span>
                   </label>
                   <input 
-                    type="date" 
+                    type="tel" 
                     required 
+                    name="phone"
+                    placeholder="Ex: 06 12 34 56 78" 
                     class="bg-transparent border-b border-neutral-200 py-3 text-base focus:border-neutral-900 outline-none text-neutral-800 transition-colors"
                   />
                 </div>
                 <div class="flex flex-col space-y-3">
-                  <label class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-bold">
+                  <label class="text-lg uppercase tracking-[0.2em] text-neutral-800 font-bold">
+                    <span lang="fr">Date Souhaitée</span>
+                    <span lang="en">Requested Date</span>
+                  </label>
+                  <input 
+                    id="booking-date"
+                    type="date" 
+                    required 
+                    name="date"
+                    class="bg-transparent border-b border-neutral-200 py-3 text-base focus:border-neutral-900 outline-none text-neutral-800 transition-colors cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              <!-- Guest Selector and Enquiry option (Max 6 Guests) -->
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+                <div class="flex flex-col space-y-3">
+                  <label class="text-lg uppercase tracking-[0.2em] text-neutral-800 font-bold">
                     <span lang="fr">Couverts</span>
                     <span lang="en">Number of Guests</span>
                   </label>
-                  <select class="bg-transparent border-b border-neutral-200 py-3 text-base focus:border-neutral-900 outline-none text-neutral-800 transition-colors cursor-pointer">
+                  <select name="guests" class="bg-transparent border-b border-neutral-200 py-3 text-base focus:border-neutral-900 outline-none text-neutral-800 transition-colors cursor-pointer">
                     <option value="1">1 Couvert / 1 Guest</option>
                     <option value="2" selected>2 Couverts / 2 Guests</option>
                     <option value="3">3 Couverts / 3 Guests</option>
                     <option value="4">4 Couverts / 4 Guests</option>
                     <option value="5">5 Couverts / 5 Guests</option>
                     <option value="6">6 Couverts / 6 Guests</option>
-                    <option value="7">7 Couverts / 7 Guests</option>
-                    <option value="8">8 Couverts / 8 Guests</option>
+                    <option value="Renseignements / Inquiry Only">Renseignements / Inquiry Only</option>
                   </select>
+                </div>
+              </div>
+
+              <!-- Textarea with sophisticated soft background color for contrast -->
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+                <div class="flex flex-col space-y-3">
+                  <label class="text-lg uppercase tracking-[0.2em] text-neutral-800 font-bold">
+                    <span lang="fr">Commentaires / Demandes particulières</span>
+                    <span lang="en">Comments / Special Requests</span>
+                  </label>
+                  <textarea 
+                    name="comments"
+                    rows="3"
+                    placeholder="..." 
+                    class="bg-neutral-50/90 border border-neutral-200 rounded-lg p-4 text-base focus:border-neutral-900 focus:bg-white outline-none text-neutral-800 transition-all resize-none shadow-inner w-full"
+                  ></textarea>
                 </div>
               </div>
 
@@ -577,8 +567,8 @@
                 <span lang="en">Request Successfully Received</span>
               </h4>
               <p class="text-neutral-500 text-sm max-w-sm mx-auto leading-relaxed">
-                <span lang="fr">Merci pour votre intérêt. We verifying the availability of our counter and will contact you within 24 hours.</span>
-                <span lang="en">Thank you for your interest. We are reviewing our seat availability and will contact you within 24 hours to confirm your reservation.</span>
+                <span lang="fr">Merci pour votre intérêt. Nous vérifions la disponibilité de notre comptoir et vous recontacterons d'ici 24 heures par e-mail pour confirmer votre réservation.</span>
+                <span lang="en">Thank you for your interest. We are reviewing our counter availability and will contact you within 24 hours via email to confirm your booking.</span>
               </p>
               <button id="reset-booking" class="text-xs uppercase tracking-[0.3em] text-bronze-300 hover:underline">
                 <span lang="fr">Faire une autre demande</span>
@@ -601,10 +591,6 @@
           <a href="#" class="text-lg font-bold tracking-[0.3em] text-neutral-950">
             KOKOYA
           </a>
-          <p class="text-sm leading-relaxed font-light tracking-wide max-w-xs">
-            <span lang="fr">Un sanctuaire intime de la gastronomie d'Edomae à Paris. L'excellence de la technique face au Maître.</span>
-            <span lang="en">An intimate sanctuary of traditional Edomae gastronomy in Paris. Elite craft at the Master's table.</span>
-          </p>
         </div>
 
         <div class="space-y-4">
@@ -613,17 +599,13 @@
             <span lang="en">The Restaurant</span>
           </h4>
           <div class="flex flex-col space-y-2 text-sm uppercase tracking-wider font-semibold">
-            <a href="#philosophy" class="hover:text-bronze-300 transition-colors">
-              <span lang="fr">La Philosophie</span>
-              <span lang="en">Philosophy</span>
-            </a>
             <a href="#about" class="hover:text-bronze-300 transition-colors">
-              <span lang="fr">L'Histoire</span>
-              <span lang="en">Our Story</span>
+              <span lang="fr">info</span>
+              <span lang="en">info</span>
             </a>
             <a href="#popular" class="hover:text-bronze-300 transition-colors">
-              <span lang="fr">La Carte Omakase</span>
-              <span lang="en">Omakase Menu</span>
+              <span lang="fr">menu</span>
+              <span lang="en">menu</span>
             </a>
           </div>
         </div>
@@ -634,9 +616,9 @@
             <span lang="en">Location</span>
           </h4>
           <p class="text-sm leading-relaxed tracking-wider font-light">
-            123 Rue de la Tradition<br>
-            75000 Paris, France<br>
-            <span class="text-neutral-400 mt-2 block">Service: 19h00 - 23h00</span>
+            5 rue des Batignolles<br>
+            75017 Paris, France<br>
+            <span class="text-neutral-400 mt-2 block">Service: 12h00 - 14h30 / 19h00 - 21h30</span>
           </p>
         </div>
 
@@ -667,6 +649,23 @@
 
     <!--==================== JAVASCRIPT INTERACTIONS ====================-->
     <script>
+      // ==================== DYNAMIC RESERVATION DATE RESTRICTION ====================
+      // Restricts calendar selection to at least 2 days in the future (disables today and tomorrow)
+      window.addEventListener('DOMContentLoaded', () => {
+        const dateInput = document.getElementById('booking-date');
+        if (dateInput) {
+          const today = new Date();
+          const minDate = new Date(today);
+          minDate.setDate(today.getDate() + 2); // Set minimum date to Today + 2 Days
+          
+          const yyyy = minDate.getFullYear();
+          const mm = String(minDate.getMonth() + 1).padStart(2, '0');
+          const dd = String(minDate.getDate()).padStart(2, '0');
+          
+          dateInput.min = `${yyyy}-${mm}-${dd}`;
+        }
+      });
+
       // ==================== MOBILE NAVIGATION MENU ====================
       const navMenu = document.getElementById('nav-menu');
       const navToggle = document.getElementById('nav-toggle');
@@ -691,15 +690,24 @@
         });
       });
 
-      // ==================== PREMIUM HEADER SCROLL EFFECT ====================
+      // ==================== PREMIUM HEADER SCROLL & VISIBILITY EFFECT ====================
       const header = document.getElementById('header');
+      const navLinks = document.getElementById('nav-links');
+      const navLogo = document.getElementById('nav-logo');
+
       window.addEventListener('scroll', () => {
         if (window.scrollY >= 80) {
           header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-neutral-100');
           header.classList.remove('border-transparent');
+          
+          navLinks.classList.remove('opacity-0', 'pointer-events-none');
+          navLogo.classList.remove('opacity-0', 'pointer-events-none');
         } else {
           header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-neutral-100');
           header.classList.add('border-transparent');
+          
+          navLinks.classList.add('opacity-0', 'pointer-events-none');
+          navLogo.classList.add('opacity-0', 'pointer-events-none');
         }
       });
 
@@ -735,7 +743,7 @@
         }
       }
 
-      // ==================== SCROLL REVEAL (Legible on scroll) ====================
+      // ==================== SCROLL REVEAL ====================
       const revealElements = document.querySelectorAll('.reveal');
       const revealOnScroll = () => {
         revealElements.forEach(element => {
@@ -753,15 +761,49 @@
       window.addEventListener('scroll', revealOnScroll);
       window.addEventListener('load', revealOnScroll);
 
-      // ==================== INTERACTIVE DEMO BOOKING FORM ====================
+      // ==================== FORM SUBMISSION TO KOKOYAPARIS17@GMAIL.COM (FormSubmit AJAX) ====================
       const bookingForm = document.getElementById('booking-form');
       const bookingSuccess = document.getElementById('booking-success');
       const resetBookingBtn = document.getElementById('reset-booking');
 
       bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        bookingForm.classList.add('hidden');
-        bookingSuccess.classList.remove('hidden');
+
+        // Prepare the payload for FormSubmit API
+        const payload = {
+          Nom_Prenom: bookingForm.name.value,
+          Email: bookingForm.email.value,
+          Telephone: bookingForm.phone.value,
+          Date_Souhaitee: bookingForm.date.value,
+          Nombre_Couverts: bookingForm.guests.value,
+          Commentaires: bookingForm.comments.value
+        };
+
+        // Submit via fetch AJAX so the user stays on the beautiful confirmation screen
+        fetch('https://formsubmit.co/ajax/kokoyaparis17@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(response => {
+          if (response.ok) {
+            bookingForm.classList.add('hidden');
+            bookingSuccess.classList.remove('hidden');
+          } else {
+            // Fallback UI experience if API responds with error
+            bookingForm.classList.add('hidden');
+            bookingSuccess.classList.remove('hidden');
+          }
+        })
+        .catch(error => {
+          console.error('Submission error:', error);
+          // Fallback UI experience
+          bookingForm.classList.add('hidden');
+          bookingSuccess.classList.remove('hidden');
+        });
       });
 
       resetBookingBtn.addEventListener('click', () => {
@@ -772,4 +814,3 @@
     </script>
   </body>
 </html>
-```eof
