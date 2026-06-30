@@ -263,7 +263,7 @@
                   </p>
 
                   <div class="pt-2 w-full h-32 rounded-lg overflow-hidden shadow-sm border border-neutral-200">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.6343516082447!2d2.3184698769399893!3d48.88422409854744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fabaa0dbb3d%3A0x6b4ef8d77bf1fb2!2s5%20Rue%20des%20Batignolles%2C%2075017%20Paris!5e0!3m2!1sfr!2sfr!4v1719694200000!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.5938174542563!2d2.3211941!3d48.8833411!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fb33785854f%3A0x18fc3b6f3e2200ab!2sKOKOYA!5e0!3m2!1sfr!2sfr!4v1719694200000!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                   </div>
                 </div>
               </div>
@@ -487,7 +487,7 @@
                 <span lang="en">Request Successfully Received</span>
               </h4>
               <p class="text-neutral-500 text-sm max-w-sm mx-auto leading-relaxed">
-                <span lang="fr">Merci pour votre intérêt. Nous vérifions la disponibilité de notre comptoir et vous recontacterons d'ici 24 heures par e-mail pour confirmer votre réservation.</span>
+                <span lang="fr">Merci pour votre intérêt. We vérifions la disponibilité de notre comptoir et vous recontacterons d'ici 24 heures par e-mail pour confirmer votre réservation.</span>
                 <span lang="en">Thank you for your interest. We are reviewing our counter availability and will contact you within 24 hours via email to confirm your booking.</span>
               </p>
               <button id="reset-booking" class="text-xs uppercase tracking-[0.1em] text-bronze-300 hover:underline">
@@ -649,10 +649,14 @@
         const groups = [];
         const map = {};
         items.forEach(item => {
-          const key = item.subcategory && item.subcategory.trim() ? item.subcategory.trim() : null;
-          const groupKey = key || '__none__';
+          const keyFr = item.subcategory && item.subcategory.trim() ? item.subcategory.trim() : null;
+          const groupKey = keyFr || '__none__';
           if (!map[groupKey]) {
-            map[groupKey] = { subcategory: key, items: [] };
+            map[groupKey] = { 
+              subcategory_fr: keyFr, 
+              subcategory_en: item.subcategory_en && item.subcategory_en.trim() ? item.subcategory_en.trim() : keyFr,
+              items: [] 
+            };
             groups.push(map[groupKey]);
           }
           map[groupKey].items.push(item);
@@ -684,12 +688,13 @@
               group.items.map((item, idx) => buildSimpleListItem(item, idx)).join('')
             }</div>`;
 
-            if (!group.subcategory) return itemsHtml;
+            if (!group.subcategory_fr) return itemsHtml;
 
             return `
               <div class="space-y-5">
                 <h3 class="inline-flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
-                  ${group.subcategory}
+                  <span lang="fr">${group.subcategory_fr}</span>
+                  <span lang="en">${group.subcategory_en}</span>
                 </h3>
                 ${itemsHtml}
               </div>`;
@@ -762,29 +767,20 @@
       loadMenuItems();
 
       // ==================== DATE & CLOSING CONTROLS ====================
-      // 1. 【手動設定】独自の臨時休業（夏休みや連休など）の「期間」をここに設定します
-      //    形式: { start: '開始日(YYYY-MM-DD)', end: '終了日(YYYY-MM-DD)' }
       const CLOSING_PERIODS = [
-        { start: '2026-08-04', end: '2026-08-22' }, // 例: 夏季休暇（8/04〜8/22まで一括ロック）
-        // 追加したい場合は、以下のようにカンマ区切りで増やせます：
-        // { start: '2026-11-03', end: '2026-11-07' } 
+        { start: '2026-08-04', end: '2026-08-22' }, 
       ];
 
-      // 2. 【単発設定】もし1日だけの突発的な休みがあれば、ここに直接追加も可能です
       const SPECIAL_CLOSING_DATES = [
-        // '2026-07-20' // 1日だけ休む場合（祝日は自動取得されるので書かなくてOKです）
       ];
 
-      // フランス政府公認（etalab）の祝日を格納する配列
       let frenchPublicHolidays = [];
 
-      // 祝日APIからデータを取得する関数
       async function fetchFrenchHolidays(year) {
         try {
           const response = await fetch(`https://calendrier.api.gouv.fr/jours-feries/metropole/${year}.json`);
           if (response.ok) {
             const data = await response.json();
-            // 取得したオブジェクトのキー（YYYY-MM-DD一覧）をマージ
             frenchPublicHolidays = [...frenchPublicHolidays, ...Object.keys(data)];
           }
         } catch (error) {
@@ -792,7 +788,6 @@
         }
       }
 
-      // 指定された開始日から終了日までの日付配列（YYYY-MM-DD）を生成するヘルパー関数
       function getDatesInRange(startDateStr, endDateStr) {
         const dates = [];
         const start = new Date(startDateStr);
@@ -813,11 +808,9 @@
           const today = new Date();
           const currentYear = today.getFullYear();
           
-          // フランスの祝日を自動取得（年をまたぐ予約を考慮して、今年と来年の2年分を自動取得）
           await fetchFrenchHolidays(currentYear);
           await fetchFrenchHolidays(currentYear + 1);
 
-          // 期間設定（CLOSING_PERIODS）から該当する日付をすべてフラットな配列に展開
           let dynamicClosingDates = [...SPECIAL_CLOSING_DATES];
           CLOSING_PERIODS.forEach(period => {
             if (period.start && period.end) {
@@ -827,33 +820,29 @@
           });
 
           const minDate = new Date(today);
-          minDate.setDate(today.getDate() + 1); // 翌日以降のみ受付
+          minDate.setDate(today.getDate() + 1); 
           
           const yyyy = minDate.getFullYear();
           const mm = String(minDate.getMonth() + 1).padStart(2, '0');
           const dd = String(minDate.getDate()).padStart(2, '0');
           dateInput.min = `${yyyy}-${mm}-${dd}`;
 
-          // 日曜日(0)・月曜日(1)、祝日、および臨時休業日の入力制御
           dateInput.addEventListener('input', (e) => {
-            const selectedDateStr = e.target.value; // YYYY-MM-DD形式
+            const selectedDateStr = e.target.value; 
             const day = new Date(selectedDateStr).getDay();
 
-            // ① 定休日 (日曜日=0, 月曜日=1) のバリデーション
             if (day === 0 || day === 1) {
               alert("Le restaurant est fermé les dimanches et lundis. / The restaurant is closed on Sundays and Mondays.");
               e.target.value = "";
               return;
             }
 
-            // ② 自動取得したフランスの祝日バリデーション
             if (frenchPublicHolidays.includes(selectedDateStr)) {
               alert("Le restaurant est fermé les jours fériés. / The restaurant is closed on public holidays.");
               e.target.value = "";
               return;
             }
 
-            // ③ 手動で設定した臨時休業日・連休バリデーション
             if (dynamicClosingDates.includes(selectedDateStr)) {
               alert("Le restaurant est exceptionnellement fermé à cette date. / The restaurant is exceptionally closed.");
               e.target.value = "";
