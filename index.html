@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KOKOYA PARIS — L'Art du Sushi Authentique</title>
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -679,31 +681,36 @@
 
         emptyEl.className = 'hidden';
 
-        if (activeCategory === 'À la carte' || activeCategory === 'Boissons') {
-          gridEl.className = "flex flex-col gap-10";
+        // All categories: group by subcategory, list view, one image per subcategory
+        gridEl.className = "flex flex-col gap-12";
 
-          const groups = groupBySubcategory(filtered);
-          gridEl.innerHTML = groups.map(group => {
-            const itemsHtml = `<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">${
-              group.items.map((item, idx) => buildSimpleListItem(item, idx)).join('')
-            }</div>`;
+        const groups = groupBySubcategory(filtered);
+        gridEl.innerHTML = groups.map(group => {
+          const itemsHtml = `<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">${
+            group.items.map((item, idx) => buildSimpleListItem(item, idx)).join('')
+          }</div>`;
 
-            if (!group.subcategory_fr) return itemsHtml;
+          if (!group.subcategory_fr) return `<div>${itemsHtml}</div>`;
 
-            return `
-              <div class="space-y-5">
-                <h3 class="inline-flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
-                  <span lang="fr">${group.subcategory_fr}</span>
-                  <span lang="en">${group.subcategory_en}</span>
-                </h3>
-                ${itemsHtml}
-              </div>`;
-          }).join('');
+          // Find first item with image_url in this group for subcategory photo
+          const imgItem = group.items.find(i => i.image_url && i.image_url.trim());
+          const imgHtml = imgItem ? `
+            <div class="w-full max-w-sm mx-auto md:mx-0 aspect-[4/3] overflow-hidden rounded-lg shadow-sm border border-neutral-100 mb-6">
+              <img src="${imgItem.image_url}" alt="${imgItem.name_fr || ''}"
+                class="w-full h-full object-cover"
+                onerror="this.parentElement.style.display='none';" />
+            </div>` : '';
 
-        } else {
-          gridEl.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12";
-          gridEl.innerHTML = filtered.map((item, idx) => buildMenuCard(item, idx)).join('');
-        }
+          return `
+            <div class="space-y-5">
+              <h3 class="inline-flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
+                <span lang="fr">${group.subcategory_fr}</span>
+                <span lang="en">${group.subcategory_en}</span>
+              </h3>
+              ${imgHtml}
+              ${itemsHtml}
+            </div>`;
+        }).join('');
 
         gridEl.classList.remove('hidden');
       }
