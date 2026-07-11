@@ -298,14 +298,11 @@
             <button data-cat="all" class="menu-filter-btn active-filter px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-900 bg-neutral-900 text-white transition-all duration-300 rounded-full">
               <span lang="fr">Tout</span><span lang="en">All</span>
             </button>
-            <button data-cat="Menu du midi" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
-              <span lang="fr">Menu du midi</span><span lang="en">Lunch Menu</span>
+            <button data-cat="Menu de midi" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+              <span lang="fr">Menu de midi</span><span lang="en">Lunch Menu</span>
             </button>
-            <button data-cat="Menu du soir" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
-              <span lang="fr">Menu du soir</span><span lang="en">Dinner Menu</span>
-            </button>
-            <button data-cat="Plateaux de fête" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
-              <span lang="fr">Plateaux de fête</span><span lang="en">Party set</span>
+            <button data-cat="Menu de soir" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+              <span lang="fr">Menu de soir</span><span lang="en">Dinner Menu</span>
             </button>
             <button data-cat="À la carte" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">À la carte</span><span lang="en">À la carte</span>
@@ -617,9 +614,8 @@
             </p>` : '';
 
         const catLabels = {
-          'Menu du midi': { fr: 'Menu du midi', en: 'Lunch Menu' },
-          'Menu du soir': { fr: 'Menu du soir', en: 'Dinner Menu' },
-          'Plateaux de fête': { fr: 'Plateaux de fête', en: 'Party set' },
+          'Menu de midi': { fr: 'Menu de midi', en: 'Lunch Menu' },
+          'Menu de soir': { fr: 'Menu de soir', en: 'Dinner Menu' },
         };
         const catHtml = item.category ? (() => {
           const lbl = catLabels[item.category] || { fr: item.category, en: item.category };
@@ -630,11 +626,11 @@
 
         return `
           <div class="group border-b ${isFeatured ? 'border-bronze-300' : 'border-neutral-100'} pb-8 text-left space-y-4 reveal active" style="transition-delay: ${delay}ms;">
-            <div class="aspect-[16/9] w-full overflow-hidden bg-neutral-50 mb-6 rounded-lg shadow-sm border border-neutral-100">
+            <div class="aspect-[16/10] w-full overflow-hidden bg-neutral-50 mb-6 rounded-lg shadow-sm border border-neutral-100">
               <img
                 src="${imageSrc}"
                 alt="${nameFr}"
-                class="w-full h-full object-cover object-center mx-auto transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onerror="this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=600';"
               />
             </div>
@@ -699,9 +695,9 @@
           // Find first item with image_url in this group for subcategory photo
           const imgItem = group.items.find(i => i.image_url && i.image_url.trim());
           const imgHtml = imgItem ? `
-            <div class="w-full max-w-2xl mx-auto aspect-[16/9] overflow-hidden rounded-lg shadow-sm border border-neutral-100 mb-6">
+            <div class="w-full max-w-sm mx-auto md:mx-0 aspect-[4/3] overflow-hidden rounded-lg shadow-sm border border-neutral-100 mb-6">
               <img src="${imgItem.image_url}" alt="${imgItem.name_fr || ''}"
-                class="w-full h-full object-cover object-center"
+                class="w-full h-full object-cover"
                 onerror="this.parentElement.style.display='none';" />
             </div>` : '';
 
@@ -770,8 +766,8 @@
           const descSoir = document.getElementById('desc-soir');
           descMidi.classList.add('hidden');
           descSoir.classList.add('hidden');
-          if (activeCategory === 'Menu du midi') descMidi.classList.remove('hidden');
-          if (activeCategory === 'Menu du soir') descSoir.classList.remove('hidden');
+          if (activeCategory === 'Menu de midi') descMidi.classList.remove('hidden');
+          if (activeCategory === 'Menu de soir') descSoir.classList.remove('hidden');
         });
       });
 
