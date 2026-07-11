@@ -295,22 +295,22 @@
           </div>
 
           <div class="flex flex-wrap justify-center gap-3" id="menu-filters">
-            <button data-cat="all" class="menu-filter-btn active-filter px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-900 bg-neutral-900 text-white transition-all duration-300 rounded-full">
+            <button data-cat="all" class="menu-filter-btn active-filter px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-900 bg-neutral-900 text-white transition-all duration-300 rounded-full">
               <span lang="fr">Tout</span><span lang="en">All</span>
             </button>
-            <button data-cat="Menu du midi" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="Menu du midi" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">Menu du midi</span><span lang="en">Lunch Menu</span>
             </button>
-            <button data-cat="Menu du soir" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="Menu du soir" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">Menu du soir</span><span lang="en">Dinner Menu</span>
             </button>
-            <button data-cat="Plateaux de fête" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="Plateaux de fête" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">Plateaux de fête</span><span lang="en">Party set</span>
             </button>
-            <button data-cat="À la carte" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="À la carte" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">À la carte</span><span lang="en">À la carte</span>
             </button>
-            <button data-cat="Boissons" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="Boissons" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">Boissons</span><span lang="en">Drinks</span>
             </button>
           </div>
@@ -329,8 +329,12 @@
           </div>
 
           <div id="desc-soir" class="hidden text-center py-6 px-6 max-w-2xl mx-auto">
-            <p lang="fr" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">Entrée + Plat + Soupe miso + Dessert</p>
-            <p lang="en" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">Starter + Main + Miso Soup + Dessert</p>
+            <p lang="fr" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Entrée</button> + Plat + Soupe miso + <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button>
+            </p>
+            <p lang="en" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Starter</button> + Main + Miso Soup + <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button>
+            </p>
           </div>
 
           <div id="menu-loading" class="text-center py-16 text-neutral-400 tracking-[0.1em] uppercase text-sm">
@@ -625,7 +629,7 @@
         const descFr = (item.description_fr && item.description_fr !== '0') ? item.description_fr : '';
         const descEn = (item.description_en && item.description_en !== '0') ? item.description_en : '';
         const descHtml = (descFr || descEn) ? `
-            <p class="text-neutral-600 text-sm tracking-[0.03em] leading-relaxed font-light mt-1">
+            <p class="text-neutral-600 text-lg tracking-[0.03em] leading-relaxed font-light mt-1">
               ${descFr ? `<span lang="fr">${descFr}</span>` : ''}
               ${descEn ? `<span lang="en">${descEn}</span>` : ''}
             </p>` : '';
@@ -633,12 +637,12 @@
         return `
           <div class="group border-b border-neutral-100 pb-4 text-left space-y-1 reveal active" style="transition-delay: ${delay}ms;">
             <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-base font-bold text-neutral-900 tracking-[0.02em] whitespace-nowrap">
+              <h3 class="text-xl md:text-2xl font-bold text-neutral-900 tracking-[0.02em] whitespace-nowrap">
                 <span lang="fr">${nameFr}</span>
                 <span lang="en">${nameEn}</span>
               </h3>
               <div class="flex-grow border-b border-dotted border-neutral-200 mx-2"></div>
-              <span class="text-base text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
+              <span class="text-xl md:text-2xl text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
             </div>
             ${descHtml}
           </div>`;
@@ -655,7 +659,7 @@
         const descFr = (item.description_fr && item.description_fr !== '0') ? item.description_fr : '';
         const descEn = (item.description_en && item.description_en !== '0') ? item.description_en : '';
         const descHtml = (descFr || descEn) ? `
-            <p class="text-neutral-600 text-sm tracking-[0.03em] leading-relaxed font-light mt-1">
+            <p class="text-neutral-600 text-lg tracking-[0.03em] leading-relaxed font-light mt-1">
               ${descFr ? `<span lang="fr">${descFr}</span>` : ''}
               ${descEn ? `<span lang="en">${descEn}</span>` : ''}
             </p>` : '';
@@ -683,11 +687,11 @@
               />
             </div>
             <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-base font-bold ${isFeatured ? 'text-bronze-300' : 'text-neutral-900'} tracking-[0.02em]">
+              <h3 class="text-xl md:text-2xl font-bold ${isFeatured ? 'text-bronze-300' : 'text-neutral-900'} tracking-[0.02em]">
                 <span lang="fr">${nameFr}</span>
                 <span lang="en">${nameEn}</span>
               </h3>
-              <span class="text-base text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
+              <span class="text-xl md:text-2xl text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
             </div>
             ${catHtml}
             ${descHtml}
@@ -751,7 +755,7 @@
 
           return `
             <div class="space-y-5">
-              <h3 class="inline-flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
+              <h3 class="inline-flex items-center gap-3 text-lg md:text-xl font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
                 <span lang="fr">${group.subcategory_fr}</span>
                 <span lang="en">${group.subcategory_en}</span>
               </h3>
