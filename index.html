@@ -222,9 +222,9 @@
           <div class="lg:col-span-6 relative reveal">
             <div class="relative group max-w-xl mx-auto overflow-hidden border border-neutral-200 p-3 bg-white shadow-md rounded-lg">
               <img
-                src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&q=80&w=1200"
-                alt="Chef slicing fresh fish meticulously"
-                class="w-full aspect-[4/3] object-cover rounded-md transition-all duration-[1.5s] ease-out group-hover:scale-105"
+                src="https://umjqopsyrylnvwkranvw.supabase.co/storage/v1/object/public/menu_img/mise.webp"
+                alt="Mise en place"
+                class="w-full aspect-[4/5] object-cover rounded-md transition-all duration-[1.5s] ease-out group-hover:scale-105"
               />
             </div>
           </div>
@@ -317,14 +317,14 @@
 
           <div id="desc-midi" class="hidden text-center py-6 px-6 max-w-2xl mx-auto">
             <p lang="fr" class="text-3xl md:text-4xl text-neutral-900 tracking-wide leading-snug font-normal">
-              Entrée + Plat + Soupe miso<br>
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Entrée</button> + Plat + Soupe miso<br>
               <span class="text-bronze-300 text-2xl md:text-3xl my-1 block font-normal">ou</span>
-              Dessert + Plat + Soupe miso
+              <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button> + Plat + Soupe miso
             </p>
             <p lang="en" class="text-3xl md:text-4xl text-neutral-900 tracking-wide leading-snug font-normal">
-              Starter + Main + Miso Soup<br>
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Starter</button> + Main + Miso Soup<br>
               <span class="text-bronze-300 text-2xl md:text-3xl my-1 block font-normal">or</span>
-              Dessert + Main + Miso Soup
+              <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button> + Main + Miso Soup
             </p>
           </div>
 
@@ -561,11 +561,55 @@
       </div>
     </footer>
 
+    <!-- ==================== MENU ITEM DETAIL POPUP ==================== -->
+    <div id="menu-popup" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-6">
+      <div id="menu-popup-backdrop" class="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm"></div>
+      <div class="relative bg-white rounded-lg shadow-2xl max-w-md w-full p-8 md:p-10">
+        <button type="button" id="menu-popup-close" class="absolute top-4 right-4 text-2xl text-neutral-400 hover:text-neutral-900 transition-colors">
+          <i class="ri-close-line"></i>
+        </button>
+        <h3 id="menu-popup-title" class="text-xl md:text-2xl font-bold text-neutral-900 tracking-[0.05em] mb-4"></h3>
+        <div id="menu-popup-body" class="text-neutral-600 text-base md:text-lg leading-relaxed font-light tracking-[0.02em]"></div>
+      </div>
+    </div>
+
     <a href="#" class="fixed bottom-8 right-8 z-40 bg-neutral-950 text-white w-12 h-12 flex items-center justify-center rounded-full opacity-0 hover:bg-bronze-300 shadow-lg transition-all duration-300" id="scroll-up">
       <i class="ri-arrow-up-line text-xl"></i>
     </a>
 
     <script>
+      // ==================== MENU ITEM DETAIL POPUP ====================
+      const MENU_POPUP_CONTENT = {
+        entree: {
+          title: '<span lang="fr">Entrée</span><span lang="en">Starter</span>',
+          body: '<span lang="fr">Assortiment de legumes marinés</span><span lang="en">Assortment of marinated vegetables</span>'
+        },
+        dessert: {
+          title: '<span lang="fr">Dessert</span><span lang="en">Dessert</span>',
+          body: '<span lang="fr">- Crème brûlée au sésame noir<br>- Glace (Thé vert ou Sésame noir)<br>- Sorbet au Yuzu</span><span lang="en">- Black sesame crème brûlée<br>- Ice cream (Green tea or Black sesame)<br>- Yuzu sorbet</span>'
+        }
+      };
+
+      function openMenuPopup(key) {
+        const data = MENU_POPUP_CONTENT[key];
+        if (!data) return;
+        document.getElementById('menu-popup-title').innerHTML = data.title;
+        document.getElementById('menu-popup-body').innerHTML = data.body;
+        document.getElementById('menu-popup').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenuPopup() {
+        document.getElementById('menu-popup').classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('menu-popup-close').addEventListener('click', closeMenuPopup);
+      document.getElementById('menu-popup-backdrop').addEventListener('click', closeMenuPopup);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenuPopup();
+      });
+
       // ==================== SUPABASE MENU LOADER WITH CATEGORY FILTER ====================
       const SUPABASE_URL = 'https://umjqopsyrylnvwkranvw.supabase.co/rest/v1/';
       const SUPABASE_KEY = 'sb_publishable_KVUI4xifwExFfaAmJDbuBw_0RXlz4wr';
