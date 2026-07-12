@@ -1017,6 +1017,7 @@
       bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const payload = {
+          _subject: 'Reservation from https://kokoyaparis.com',
           Nom_Prenom: bookingForm.name.value,
           Email: bookingForm.email.value,
           Telephone: bookingForm.phone.value,
