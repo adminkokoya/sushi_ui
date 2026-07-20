@@ -265,8 +265,8 @@
                   </p>
 
                   <div class="pt-2 w-full h-32 rounded-lg overflow-hidden shadow-sm border border-neutral-200">
-  <iframe src="https://maps.google.com/maps?q=KOKOYA,%205%20Rue%20des%20Batignolles&t=&z=15&ie=UTF8&iwloc=&output=embed&hl=en" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
+                    <iframe src="https://maps.google.com/maps?q=KOKOYA,%205%20Rue%20des%20Batignolles&t=&z=15&ie=UTF8&iwloc=&output=embed&hl=en" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
                 </div>
               </div>
             </div>
@@ -565,6 +565,47 @@
       </div>
     </footer>
 
+    <!-- ==================== VACATION POPUP ==================== -->
+    <div id="vacation-popup" class="fixed inset-0 z-[100] flex items-center justify-center p-6">
+      <div id="vacation-popup-backdrop" class="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm"></div>
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-lg w-full p-8 md:p-10 border border-neutral-100 text-center space-y-6">
+        <button type="button" id="vacation-popup-close" class="absolute top-4 right-4 text-2xl text-neutral-400 hover:text-neutral-900 transition-colors">
+          <i class="ri-close-line"></i>
+        </button>
+
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-bronze-50 text-bronze-300 text-2xl mx-auto">
+          <i class="ri-calendar-event-line"></i>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-xl md:text-2xl font-bold text-neutral-900 tracking-[0.05em] uppercase">
+            <span lang="fr">Fermeture Annuelle</span>
+            <span lang="en">Annual Closure</span>
+          </h3>
+          <p class="text-base md:text-lg font-semibold text-bronze-500">
+            <span lang="fr">Du 4 au 24 août inclus</span>
+            <span lang="en">From August 4th to 24th inclusive</span>
+          </p>
+        </div>
+
+        <div class="border-t border-b border-neutral-100 py-4 text-neutral-600 text-sm md:text-base leading-relaxed font-light">
+          <p lang="fr">
+            Nous aussi, nous avons besoin de repos !<br>
+            Toute l'équipe vous souhaite d'excellentes vacances et aura le plaisir de vous retrouver dès le 25 août.
+          </p>
+          <p lang="en">
+            We also need a little break!<br>
+            The whole team wishes you a wonderful summer and looks forward to welcoming you back on August 25th.
+          </p>
+        </div>
+
+        <button type="button" onclick="closeVacationPopup()" class="w-full py-3.5 bg-neutral-950 hover:bg-bronze-300 text-white text-xs uppercase tracking-[0.2em] font-bold rounded-lg transition-all duration-300">
+          <span lang="fr">Compris</span>
+          <span lang="en">Got it</span>
+        </button>
+      </div>
+    </div>
+
     <!-- ==================== MENU ITEM DETAIL POPUP ==================== -->
     <div id="menu-popup" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-6">
       <div id="menu-popup-backdrop" class="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm"></div>
@@ -582,6 +623,26 @@
     </a>
 
     <script>
+      // ==================== VACATION POPUP LOGIC ====================
+      function openVacationPopup() {
+        const popup = document.getElementById('vacation-popup');
+        if (popup) {
+          popup.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeVacationPopup() {
+        const popup = document.getElementById('vacation-popup');
+        if (popup) {
+          popup.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      }
+
+      document.getElementById('vacation-popup-close')?.addEventListener('click', closeVacationPopup);
+      document.getElementById('vacation-popup-backdrop')?.addEventListener('click', closeVacationPopup);
+
       // ==================== MENU ITEM DETAIL POPUP ====================
       const MENU_POPUP_CONTENT = {
         entree: {
@@ -611,7 +672,10 @@
       document.getElementById('menu-popup-close').addEventListener('click', closeMenuPopup);
       document.getElementById('menu-popup-backdrop').addEventListener('click', closeMenuPopup);
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenuPopup();
+        if (e.key === 'Escape') {
+          closeMenuPopup();
+          closeVacationPopup();
+        }
       });
 
       // ==================== SUPABASE MENU LOADER WITH CATEGORY FILTER ====================

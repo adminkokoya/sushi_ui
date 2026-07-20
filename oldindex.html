@@ -222,9 +222,9 @@
           <div class="lg:col-span-6 relative reveal">
             <div class="relative group max-w-xl mx-auto overflow-hidden border border-neutral-200 p-3 bg-white shadow-md rounded-lg">
               <img
-                src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&q=80&w=1200"
-                alt="Chef slicing fresh fish meticulously"
-                class="w-full aspect-[4/3] object-cover rounded-md transition-all duration-[1.5s] ease-out group-hover:scale-105"
+                src="https://umjqopsyrylnvwkranvw.supabase.co/storage/v1/object/public/menu_img/mise.webp"
+                alt="Mise en place"
+                class="w-full aspect-[4/5] object-cover rounded-md transition-all duration-[1.5s] ease-out group-hover:scale-105"
               />
             </div>
           </div>
@@ -295,39 +295,46 @@
           </div>
 
           <div class="flex flex-wrap justify-center gap-3" id="menu-filters">
-            <button data-cat="all" class="menu-filter-btn active-filter px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-900 bg-neutral-900 text-white transition-all duration-300 rounded-full">
+            <button data-cat="all" class="menu-filter-btn active-filter px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-900 bg-neutral-900 text-white transition-all duration-300 rounded-full">
               <span lang="fr">Tout</span><span lang="en">All</span>
             </button>
-            <button data-cat="Menu de midi" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
-              <span lang="fr">Menu de midi</span><span lang="en">Lunch Menu</span>
+            <button data-cat="Menu du midi" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+              <span lang="fr">Menu du midi</span><span lang="en">Lunch Menu</span>
             </button>
-            <button data-cat="Menu de soir" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
-              <span lang="fr">Menu de soir</span><span lang="en">Dinner Menu</span>
+            <button data-cat="Menu du soir" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+              <span lang="fr">Menu du soir</span><span lang="en">Dinner Menu</span>
             </button>
-            <button data-cat="À la carte" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="Plateaux de fête" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+              <span lang="fr">Plateaux de fête</span><span lang="en">Party set</span>
+            </button>
+            <button data-cat="À la carte" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">À la carte</span><span lang="en">À la carte</span>
             </button>
-            <button data-cat="Boissons" class="menu-filter-btn px-5 py-2 text-xs uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
+            <button data-cat="Boissons" class="menu-filter-btn px-5 py-2 text-sm uppercase tracking-[0.15em] font-bold border border-neutral-300 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all duration-300 rounded-full">
               <span lang="fr">Boissons</span><span lang="en">Drinks</span>
             </button>
           </div>
 
           <div id="desc-midi" class="hidden text-center py-6 px-6 max-w-2xl mx-auto">
             <p lang="fr" class="text-3xl md:text-4xl text-neutral-900 tracking-wide leading-snug font-normal">
-              Entrée + Plat + Soupe miso<br>
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Entrée</button> + Plat + Soupe miso<br>
               <span class="text-bronze-300 text-2xl md:text-3xl my-1 block font-normal">ou</span>
-              Dessert + Plat + Soupe miso
+              <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button> + Plat + Soupe miso
             </p>
             <p lang="en" class="text-3xl md:text-4xl text-neutral-900 tracking-wide leading-snug font-normal">
-              Starter + Main + Miso Soup<br>
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Starter</button> + Main + Miso Soup<br>
               <span class="text-bronze-300 text-2xl md:text-3xl my-1 block font-normal">or</span>
-              Dessert + Main + Miso Soup
+              <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button> + Main + Miso Soup
             </p>
           </div>
 
           <div id="desc-soir" class="hidden text-center py-6 px-6 max-w-2xl mx-auto">
-            <p lang="fr" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">Entrée + Plat + Soupe miso + Dessert</p>
-            <p lang="en" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">Starter + Main + Miso Soup + Dessert</p>
+            <p lang="fr" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Entrée</button> + Plat + Soupe miso + <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button>
+            </p>
+            <p lang="en" class="text-3xl md:text-4xl text-neutral-900 tracking-wide font-normal leading-snug">
+              <button type="button" onclick="openMenuPopup('entree')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Starter</button> + Main + Miso Soup + <button type="button" onclick="openMenuPopup('dessert')" class="underline decoration-dotted decoration-2 underline-offset-4 decoration-bronze-300 hover:text-bronze-300 transition-colors cursor-pointer">Dessert</button>
+            </p>
           </div>
 
           <div id="menu-loading" class="text-center py-16 text-neutral-400 tracking-[0.1em] uppercase text-sm">
@@ -558,11 +565,55 @@
       </div>
     </footer>
 
+    <!-- ==================== MENU ITEM DETAIL POPUP ==================== -->
+    <div id="menu-popup" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-6">
+      <div id="menu-popup-backdrop" class="absolute inset-0 bg-neutral-950/60 backdrop-blur-sm"></div>
+      <div class="relative bg-white rounded-lg shadow-2xl max-w-md w-full p-8 md:p-10">
+        <button type="button" id="menu-popup-close" class="absolute top-4 right-4 text-2xl text-neutral-400 hover:text-neutral-900 transition-colors">
+          <i class="ri-close-line"></i>
+        </button>
+        <h3 id="menu-popup-title" class="text-xl md:text-2xl font-bold text-neutral-900 tracking-[0.05em] mb-4"></h3>
+        <div id="menu-popup-body" class="text-neutral-600 text-base md:text-lg leading-relaxed font-light tracking-[0.02em]"></div>
+      </div>
+    </div>
+
     <a href="#" class="fixed bottom-8 right-8 z-40 bg-neutral-950 text-white w-12 h-12 flex items-center justify-center rounded-full opacity-0 hover:bg-bronze-300 shadow-lg transition-all duration-300" id="scroll-up">
       <i class="ri-arrow-up-line text-xl"></i>
     </a>
 
     <script>
+      // ==================== MENU ITEM DETAIL POPUP ====================
+      const MENU_POPUP_CONTENT = {
+        entree: {
+          title: '<span lang="fr">Entrée</span><span lang="en">Starter</span>',
+          body: '<span lang="fr">Assortiment de legumes marinés</span><span lang="en">Assortment of marinated vegetables</span>'
+        },
+        dessert: {
+          title: '<span lang="fr">Dessert</span><span lang="en">Dessert</span>',
+          body: '<span lang="fr">- Crème brûlée au sésame noir<br>- Glace (Thé vert ou Sésame noir)<br>- Sorbet au Yuzu</span><span lang="en">- Black sesame crème brûlée<br>- Ice cream (Green tea or Black sesame)<br>- Yuzu sorbet</span>'
+        }
+      };
+
+      function openMenuPopup(key) {
+        const data = MENU_POPUP_CONTENT[key];
+        if (!data) return;
+        document.getElementById('menu-popup-title').innerHTML = data.title;
+        document.getElementById('menu-popup-body').innerHTML = data.body;
+        document.getElementById('menu-popup').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenuPopup() {
+        document.getElementById('menu-popup').classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('menu-popup-close').addEventListener('click', closeMenuPopup);
+      document.getElementById('menu-popup-backdrop').addEventListener('click', closeMenuPopup);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenuPopup();
+      });
+
       // ==================== SUPABASE MENU LOADER WITH CATEGORY FILTER ====================
       const SUPABASE_URL = 'https://umjqopsyrylnvwkranvw.supabase.co/rest/v1/';
       const SUPABASE_KEY = 'sb_publishable_KVUI4xifwExFfaAmJDbuBw_0RXlz4wr';
@@ -578,7 +629,7 @@
         const descFr = (item.description_fr && item.description_fr !== '0') ? item.description_fr : '';
         const descEn = (item.description_en && item.description_en !== '0') ? item.description_en : '';
         const descHtml = (descFr || descEn) ? `
-            <p class="text-neutral-600 text-sm tracking-[0.03em] leading-relaxed font-light mt-1">
+            <p class="text-neutral-600 text-lg tracking-[0.03em] leading-relaxed font-light mt-1">
               ${descFr ? `<span lang="fr">${descFr}</span>` : ''}
               ${descEn ? `<span lang="en">${descEn}</span>` : ''}
             </p>` : '';
@@ -586,12 +637,12 @@
         return `
           <div class="group border-b border-neutral-100 pb-4 text-left space-y-1 reveal active" style="transition-delay: ${delay}ms;">
             <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-base font-bold text-neutral-900 tracking-[0.02em] whitespace-nowrap">
+              <h3 class="text-xl md:text-2xl font-bold text-neutral-900 tracking-[0.02em] whitespace-nowrap">
                 <span lang="fr">${nameFr}</span>
                 <span lang="en">${nameEn}</span>
               </h3>
               <div class="flex-grow border-b border-dotted border-neutral-200 mx-2"></div>
-              <span class="text-base text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
+              <span class="text-xl md:text-2xl text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
             </div>
             ${descHtml}
           </div>`;
@@ -608,14 +659,15 @@
         const descFr = (item.description_fr && item.description_fr !== '0') ? item.description_fr : '';
         const descEn = (item.description_en && item.description_en !== '0') ? item.description_en : '';
         const descHtml = (descFr || descEn) ? `
-            <p class="text-neutral-600 text-sm tracking-[0.03em] leading-relaxed font-light mt-1">
+            <p class="text-neutral-600 text-lg tracking-[0.03em] leading-relaxed font-light mt-1">
               ${descFr ? `<span lang="fr">${descFr}</span>` : ''}
               ${descEn ? `<span lang="en">${descEn}</span>` : ''}
             </p>` : '';
 
         const catLabels = {
-          'Menu de midi': { fr: 'Menu de midi', en: 'Lunch Menu' },
-          'Menu de soir': { fr: 'Menu de soir', en: 'Dinner Menu' },
+          'Menu du midi': { fr: 'Menu du midi', en: 'Lunch Menu' },
+          'Menu du soir': { fr: 'Menu du soir', en: 'Dinner Menu' },
+          'Plateaux de fête': { fr: 'Plateaux de fête', en: 'Party set' },
         };
         const catHtml = item.category ? (() => {
           const lbl = catLabels[item.category] || { fr: item.category, en: item.category };
@@ -626,20 +678,20 @@
 
         return `
           <div class="group border-b ${isFeatured ? 'border-bronze-300' : 'border-neutral-100'} pb-8 text-left space-y-4 reveal active" style="transition-delay: ${delay}ms;">
-            <div class="aspect-[16/10] w-full overflow-hidden bg-neutral-50 mb-6 rounded-lg shadow-sm border border-neutral-100">
+            <div class="aspect-[16/9] w-full overflow-hidden bg-neutral-50 mb-6 rounded-lg shadow-sm border border-neutral-100">
               <img
                 src="${imageSrc}"
                 alt="${nameFr}"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-full object-cover object-center mx-auto transition-transform duration-500 group-hover:scale-105"
                 onerror="this.src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=600';"
               />
             </div>
             <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-base font-bold ${isFeatured ? 'text-bronze-300' : 'text-neutral-900'} tracking-[0.02em]">
+              <h3 class="text-xl md:text-2xl font-bold ${isFeatured ? 'text-bronze-300' : 'text-neutral-900'} tracking-[0.02em]">
                 <span lang="fr">${nameFr}</span>
                 <span lang="en">${nameEn}</span>
               </h3>
-              <span class="text-base text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
+              <span class="text-xl md:text-2xl text-bronze-300 font-bold tracking-[0.05em] whitespace-nowrap">${item.price ? item.price + ' €' : ''}</span>
             </div>
             ${catHtml}
             ${descHtml}
@@ -695,15 +747,15 @@
           // Find first item with image_url in this group for subcategory photo
           const imgItem = group.items.find(i => i.image_url && i.image_url.trim());
           const imgHtml = imgItem ? `
-            <div class="w-full max-w-sm mx-auto md:mx-0 aspect-[4/3] overflow-hidden rounded-lg shadow-sm border border-neutral-100 mb-6">
+            <div class="w-full max-w-2xl mx-auto aspect-[16/9] overflow-hidden rounded-lg shadow-sm border border-neutral-100 mb-6">
               <img src="${imgItem.image_url}" alt="${imgItem.name_fr || ''}"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover object-center"
                 onerror="this.parentElement.style.display='none';" />
             </div>` : '';
 
           return `
             <div class="space-y-5">
-              <h3 class="inline-flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
+              <h3 class="inline-flex items-center gap-3 text-lg md:text-xl font-bold uppercase tracking-[0.2em] text-bronze-500 bg-bronze-100/70 border-l-4 border-bronze-300 pl-4 pr-5 py-2 rounded-r-md">
                 <span lang="fr">${group.subcategory_fr}</span>
                 <span lang="en">${group.subcategory_en}</span>
               </h3>
@@ -766,8 +818,8 @@
           const descSoir = document.getElementById('desc-soir');
           descMidi.classList.add('hidden');
           descSoir.classList.add('hidden');
-          if (activeCategory === 'Menu de midi') descMidi.classList.remove('hidden');
-          if (activeCategory === 'Menu de soir') descSoir.classList.remove('hidden');
+          if (activeCategory === 'Menu du midi') descMidi.classList.remove('hidden');
+          if (activeCategory === 'Menu du soir') descSoir.classList.remove('hidden');
         });
       });
 
@@ -965,6 +1017,7 @@
       bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const payload = {
+          _subject: 'Reservation from https://kokoyaparis.com',
           Nom_Prenom: bookingForm.name.value,
           Email: bookingForm.email.value,
           Telephone: bookingForm.phone.value,
