@@ -567,42 +567,32 @@
 
     <!-- ==================== VACATION POPUP (COMPACT & SEETHROUGH) ==================== -->
     <div id="vacation-popup" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div id="vacation-popup-backdrop" class="absolute inset-0 bg-neutral-950/40 backdrop-blur-[2px]"></div>
-      <div class="relative bg-white/95 rounded-xl shadow-xl max-w-md w-full p-6 md:p-8 border border-neutral-200/80 text-center space-y-4">
-        <button type="button" id="vacation-popup-close" class="absolute top-3 right-3 text-xl text-neutral-400 hover:text-neutral-900 transition-colors">
+      <div id="vacation-popup-backdrop" class="absolute inset-0 backdrop-blur-sm"></div>
+      <div class="relative bg-white/97 rounded-2xl shadow-2xl max-w-xs w-full px-6 pt-10 pb-7 border border-neutral-100 text-center space-y-3">
+
+        <!-- Close button: large -->
+        <button type="button" id="vacation-popup-close" class="absolute top-3 right-3 text-3xl text-neutral-400 hover:text-neutral-900 transition-colors leading-none">
           <i class="ri-close-line"></i>
         </button>
 
-        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-bronze-50 text-bronze-300 text-xl mx-auto">
-          <i class="ri-calendar-event-line"></i>
-        </div>
-
+        <!-- Main text: large & prominent -->
         <div class="space-y-1">
-          <h3 class="text-lg font-bold text-neutral-900 tracking-[0.05em] uppercase">
+          <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 tracking-[0.03em] leading-tight">
             <span lang="fr">Fermeture Annuelle</span>
             <span lang="en">Annual Closure</span>
           </h3>
-          <p class="text-sm font-semibold text-bronze-500">
+          <p class="text-xl md:text-2xl font-bold text-bronze-400 tracking-[0.02em]">
             <span lang="fr">Du 4 au 24 août inclus</span>
-            <span lang="en">From August 4th to 24th inclusive</span>
+            <span lang="en">August 4th – 24th</span>
           </p>
         </div>
 
-        <div class="border-t border-b border-neutral-100 py-3 text-neutral-600 text-xs md:text-sm leading-relaxed font-light">
-          <p lang="fr">
-            Nous aussi, nous avons besoin de repos !<br>
-            Toute l'équipe vous souhaite d'excellentes vacances et aura le plaisir de vous retrouver dès le 25 août.
-          </p>
-          <p lang="en">
-            We also need a little break!<br>
-            The whole team wishes you a wonderful summer and looks forward to welcoming you back on August 25th.
-          </p>
-        </div>
+        <!-- Small message -->
+        <p class="text-xs text-neutral-500 leading-relaxed font-light pt-1">
+          <span lang="fr">Toute l'équipe vous souhaite d'excellentes vacances et aura le plaisir de vous retrouver dès le 25 août.</span>
+          <span lang="en">The whole team wishes you a wonderful summer and looks forward to welcoming you back on August 25th.</span>
+        </p>
 
-        <button type="button" onclick="closeVacationPopup()" class="w-full py-2.5 bg-neutral-950 hover:bg-bronze-300 text-white text-[11px] uppercase tracking-[0.2em] font-bold rounded-lg transition-all duration-300">
-          <span lang="fr">Compris</span>
-          <span lang="en">Got it</span>
-        </button>
       </div>
     </div>
 
